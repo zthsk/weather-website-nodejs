@@ -11,13 +11,13 @@ weatherForm.addEventListener('submit', (e) =>{
     messageTwo.textContent = ''
     const url = '/weather?address='+location
     fetch(url).then((response) => {
-        response.json().then(({location, forecast, rainChance, temp, address, error = undefined} = {}) => {
+        response.json().then(({location, forecast, rainChance, temp, minTemp, maxTemp, error = undefined} = {}) => {
             if(error){
                 messageOne.textContent = ''
                 messageTwo.textContent = error
             } else{
                 messageOne.textContent = location
-                messageTwo.textContent= forecast+' Temperature is '+temp+' degree and the chances of rain is '+rainChance
+                messageTwo.textContent= forecast+' Temperature is '+temp+' degree and the chances of rain is '+rainChance+'. The minimum temperature for the day is '+minTemp+' degree and the maximum temperature is '+maxTemp+' degree.'
             }
         })
     })
